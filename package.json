@@ -1,5 +1,6 @@
 {
   "name": "validate-with-xmllint",
+  "version": "1.0.0",
   "description": "Validates xml with xmllint.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
