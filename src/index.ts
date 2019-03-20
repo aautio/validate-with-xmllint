@@ -18,8 +18,17 @@ const exec_xmllint = (input: string | Buffer, command: string): Promise<void> =>
       if (code === 0) {
         return resolve();
       }
-      return reject(new Error(`xmllint exited with code ${code}`));
+      return reject(
+        new Error(
+          `xmllint exited with code ${code} when executed with ${command}`
+        )
+      );
     });
+
+    // pipe stderr and stdout to be visible in order to print out validation errors
+    // TODO: this causes `- validates` to be printed out when there are no errors detected, it should be ignored
+    xmllint.stderr.pipe(process.stderr);
+    xmllint.stdout.pipe(process.stdout);
 
     // pipe input to process
     xmllint.stdin.end(input);
