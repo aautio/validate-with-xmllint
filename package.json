@@ -1,0 +1,26 @@
+{
+  "name": "validate-with-xmllint",
+  "description": "Validates xml with xmllint.",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "nyc mocha",
+    "postinstall": "node ./lib/validate-xmllint-installation.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aautio/validate-with-xmllint"
+  },
+  "author": "Ari Autio <ari.autio@iki.fi>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^11.9.5",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^6.0.1",
+    "nyc": "^13.3.0",
+    "typescript": "^3.3.3"
+  }
+}
