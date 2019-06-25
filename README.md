@@ -1,3 +1,7 @@
+# validate-with-xmllint
+
+[![npm package][npm-badge]][npm]
+
 Wrapper for `xmllint`. Easy validation of XML. XML Schemas and DTDs supported. Zero dependencies.
 
 ## Features
@@ -103,3 +107,6 @@ This pacakge runs a postinstall script to verify that you have `xmllint` availab
 `xmllint` writes it to the stdout whenever you validate XML against XSD schemas and it passes. If the XML is not valid, then you'll see actual errors. The messages might be helpful when debugging.
 
 Currently the `validate-with-xmllint` does not provide a way to suppress this output. If you think it is a problem report an issue and I'll provide a fix for it.
+
+[npm-badge]: https://img.shields.io/npm/v/validate-with-xmllint.svg
+[npm]: https://www.npmjs.org/package/validate-with-xmllint
