@@ -1,7 +1,7 @@
 {
   "name": "validate-with-xmllint",
   "version": "1.0.2",
-  "description": "Validates xml with xmllint.",
+  "description": "Wrapper for `xmllint`. Easy validation of XML. XML Schemas and DTDs supported. Zero dependencies.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
@@ -24,8 +24,17 @@
     "@types/node": "^11.9.5",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "mocha": "^6.0.1",
-    "nyc": "^13.3.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
     "typescript": "^3.3.3"
-  }
+  },
+  "keywords": [
+    "xml",
+    "schema",
+    "xsd",
+    "validation",
+    "xmllint",
+    "dtd",
+    "well-formed"
+  ]
 }
