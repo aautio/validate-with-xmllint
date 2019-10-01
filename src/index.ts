@@ -11,6 +11,11 @@ const exec_xmllint = (input: string | Buffer, command: string): Promise<void> =>
   new Promise((resolve, reject) => {
     const xmllint = spawn(command, { shell: true });
 
+    // stdout and stderr are both captured to be made available if the promise rejects
+    let output = "";
+    xmllint.stdout.on("data", chunk => (output = chunk.toString()));
+    xmllint.stderr.on("data", chunk => (output = chunk.toString()));
+
     // Any errors cause a rejection
     xmllint.on("error", reject);
 
@@ -20,15 +25,10 @@ const exec_xmllint = (input: string | Buffer, command: string): Promise<void> =>
       }
       return reject(
         new Error(
-          `xmllint exited with code ${code} when executed with ${command}`
+          `xmllint exited with code ${code} when executed with ${command}:\n${output}`
         )
       );
     });
-
-    // pipe stderr and stdout to be visible in order to print out validation errors
-    // TODO: this causes `- validates` to be printed out when there are no errors detected, it should be ignored
-    xmllint.stderr.pipe(process.stderr);
-    xmllint.stdout.pipe(process.stdout);
 
     // pipe input to process
     xmllint.stdin.end(input);

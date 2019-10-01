@@ -67,7 +67,7 @@ validateXMLWithXSD(
 
 #### Demos of failing validations
 
-All the examples below return promises which will eventually _reject_.
+All the examples below return promises which will eventually _reject_ with the output from `xmllint`.
 
 ```js
 validateXML("<open_tag_only>");
@@ -102,11 +102,15 @@ On Debian distros look up `libxml2-utils`, on RedHat `libxml2`. A recent version
 
 This pacakge runs a postinstall script to verify that you have `xmllint` available.
 
-> What are the messages like _"- validates"_ printed to stdout?
+> How to see the actual errors in my XML?
 
-`xmllint` writes it to the stdout whenever you validate XML against XSD schemas and it passes. If the XML is not valid, then you'll see actual errors. The messages might be helpful when debugging.
+The promise is rejected with the error output from `xmllint`. The error contains all the available details. Expect to see something like this:
 
-Currently the `validate-with-xmllint` does not provide a way to suppress this output. If you think it is a problem report an issue and I'll provide a fix for it.
+```
+Error: xmllint exited with code 3 when executed with xmllint --schema /Users/aautio/foobar/validate-with-xmllint/test/xsds/valid-xsd.xsd --noout --nonet -:
+-:2: element root: Schemas validity error : Element 'root': Missing child element(s). Expected is ( body ).
+- fails to validate
+```
 
 [npm-badge]: https://img.shields.io/npm/v/validate-with-xmllint.svg
 [npm]: https://www.npmjs.org/package/validate-with-xmllint
