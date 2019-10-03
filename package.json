@@ -1,6 +1,6 @@
 {
   "name": "validate-with-xmllint",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Wrapper for `xmllint`. Easy validation of XML. XML Schemas and DTDs supported. Zero dependencies.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
