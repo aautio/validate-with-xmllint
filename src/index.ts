@@ -13,8 +13,8 @@ const exec_xmllint = (input: string | Buffer, command: string): Promise<void> =>
 
     // stdout and stderr are both captured to be made available if the promise rejects
     let output = "";
-    xmllint.stdout.on("data", chunk => (output = chunk.toString()));
-    xmllint.stderr.on("data", chunk => (output = chunk.toString()));
+    xmllint.stdout.on("data", chunk => (output += chunk.toString()));
+    xmllint.stderr.on("data", chunk => (output += chunk.toString()));
 
     // Any errors cause a rejection
     xmllint.on("error", reject);
