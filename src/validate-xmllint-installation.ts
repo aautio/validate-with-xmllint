@@ -6,7 +6,7 @@ const { spawnSync } = require("child_process");
  * It verifies that xmllint is present and can be used to perform the
  * xml validation.
  */
-if (spawnSync("xmllint --version", { shell: true }).status !== 0) {
+if (spawnSync("npm xmllint --version", { shell: true }).status !== 0) {
   throw new Error(
     "Failed to validate xmllint installation. All xml validations will fail."
   );
