@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iati-activities version="2.03">
+  <iati-activity>
+    <iati-identifier></iati-identifier>
+    <reporting-org ref="" type="">
+      <narrative></narrative>
+    </not-reporting-org>
+    <title>
+      <narrative>Activity with a closing tag error</narrative>
+    </title>
+    <description>
+      <narrative></narrative>
+    </description>
+    <participating-org role="">
+    </participating-org>
+    <activity-status code="">
+    </activity-status>
+    <activity-date type="" iso-date="2018-01-01">
+    </activity-date>
+  </iati-activity>
+</iati-activities>
