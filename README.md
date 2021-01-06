@@ -8,6 +8,7 @@ Wrapper for `xmllint`. Easy validation of XML. XML Schemas and DTDs supported. Z
 
 - Validate schemaless XML file 👉 `function validateXML(input: string | Buffer): Promise<void>`
 - Validate with DTDs 👉 `function validateXMLWithDTD(input: string | Buffer): Promise<void>`
+- Validate schemaless XML file and recover output 👉 `function validateXMLrecoverOutput(input: string | Buffer, output: string | Buffer): Promise<string | void>`
 - Validate with XML Schemas (XSD) 👉 `function validateXMLWithXSD(input: string | Buffer, xsdfile: string | Buffer): Promise<void>`
 - Written in TypeScript
 - Tests with good coverage included
@@ -23,7 +24,8 @@ Wrapper for `xmllint`. Easy validation of XML. XML Schemas and DTDs supported. Z
 const {
   validateXML,
   validateXMLWithDTD,
-  validateXMLWithXSD
+  validateXMLrecoverOutput,
+  validateXMLWithXSD,
 } = require("validate-with-xmllint");
 ```
 
