@@ -7,15 +7,14 @@ chai.use(require("chai-as-promised"));
 
 const files = fs.readdirSync(path.join(__dirname, "empty-recover"));
 
-const { validateXMLrecoverOutput } = require("..");
+const { validateXMLrecover } = require("..");
 
-describe("Test empty input with --recover --output", function () {
+describe("Test empty input with --recover", function () {
   for (const file of files) {
     it(file, function () {
       return expect(
-        validateXMLrecoverOutput(
-          fs.readFileSync(path.join(__dirname, "empty-recover", file)),
-          path.join(__dirname, "test_output", "recovered_output_" + file)
+        validateXMLrecover(
+          fs.readFileSync(path.join(__dirname, "empty-recover", file))
         )
       ).to.be.eventually.rejected;
     });
