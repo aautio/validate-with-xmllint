@@ -10,25 +10,26 @@ import { spawn } from "child_process";
 const exec_xmllint = (
   input: string | Buffer,
   command: string
-): Promise<void | string> =>
+): Promise<void | string | Object> =>
   new Promise((resolve, reject) => {
     const xmllint = spawn(command, { shell: true });
 
     // stdout and stderr are both captured to be made available if the promise rejects
     let output = "";
+    let error = "";
     xmllint.stdout.on("data", (chunk) => (output += chunk.toString()));
-    xmllint.stderr.on("data", (chunk) => (output += chunk.toString()));
+    xmllint.stderr.on("data", (chunk) => (error += chunk.toString()));
 
     // Any errors cause a rejection
     xmllint.on("error", reject);
 
     xmllint.on("close", (code) => {
       if (code === 0) {
-        return resolve(output);
+        return resolve({ output, error });
       }
       return reject(
         new Error(
-          `xmllint exited with code ${code} when executed with ${command}:\n${output}`
+          `xmllint exited with code ${code} when executed with ${command}:\n${error}`
         )
       );
     });
@@ -50,10 +51,8 @@ export const validateXML = (input: string | Buffer) =>
  *
  * @param input XML
  */
-export const validateXMLrecover = (
-  input: string | Buffer,
-  output: string | Buffer
-) => exec_xmllint(input, `xmllint --nonet --recover -`);
+export const validateXMLrecover = (input: string | Buffer) =>
+  exec_xmllint(input, `xmllint --nonet --recover -`);
 
 /**
  * Validate XML without any DTD or schema. Output Recovered XML to file.

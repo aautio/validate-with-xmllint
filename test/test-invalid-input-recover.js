@@ -16,7 +16,14 @@ describe("Test invalid input with --recover", function () {
         validateXMLrecover(
           fs.readFileSync(path.join(__dirname, "invalid-recover", file))
         )
-      );
+      ).to.eventually.have.property("output");
+    });
+    it(file, function () {
+      return expect(
+        validateXMLrecover(
+          fs.readFileSync(path.join(__dirname, "invalid-recover", file))
+        )
+      ).to.eventually.have.property("error");
     });
   }
 });
