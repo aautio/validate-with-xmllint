@@ -94,15 +94,19 @@ See more demos within the tests.
 
 ## FAQ
 
-> How to install `xmllint`?
+### Package install fails with error "Failed at the validate-with-xmllint@... postinstall script."
+
+The `validate-with-xmllint` is a wrapper for program `xmllint`. A _postinstall_ script fails if it is not available. See next section for further info.
+
+### How to install `xmllint`?
 
 You might already have it. Execute `xmllint --version` and see what it prints out.
 
 On Debian distros look up `libxml2-utils`, on RedHat `libxml2`. A recent version of `xmllint` should be bundled by default on MacOS.
 
-This pacakge runs a postinstall script to verify that you have `xmllint` available.
+This package runs a _postinstall_ script to verify that you have `xmllint` available.
 
-> How to see the actual errors in my XML?
+### How to see the actual errors in my XML?
 
 The promise is rejected with the error output from `xmllint`. The error contains all the available details. Expect to see something like this:
 
