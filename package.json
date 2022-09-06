@@ -1,6 +1,6 @@
 {
   "name": "validate-with-xmllint",
-  "version": "1.1.1",
+  "version": "1.2.1",
   "description": "Wrapper for `xmllint`. Easy validation of XML. XML Schemas and DTDs supported. Zero dependencies.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -22,12 +22,12 @@
   "author": "Ari Autio <ari.autio@iki.fi>",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^11.9.5",
-    "chai": "^4.2.0",
+    "@types/node": "^18.7.15",
+    "chai": "^4.3.6",
     "chai-as-promised": "^7.1.1",
-    "mocha": "^6.2.1",
-    "nyc": "^14.1.1",
-    "typescript": "^3.3.3"
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0",
+    "typescript": "^4.8.2"
   },
   "keywords": [
     "xml",
