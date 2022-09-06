@@ -6,13 +6,14 @@
   "types": "./lib/index.d.ts",
   "files": [
     "lib/",
+    "validate-xmllint-installation.js",
     "README.md"
   ],
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
     "test": "nyc mocha",
-    "postinstall": "node ./lib/validate-xmllint-installation.js"
+    "postinstall": "node validate-xmllint-installation.js"
   },
   "repository": {
     "type": "git",
