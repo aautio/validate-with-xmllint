@@ -58,4 +58,4 @@ export const validateXMLWithDTD = (input: string | Buffer) =>
 export const validateXMLWithXSD = (
   input: string | Buffer,
   xsdfile: string | Buffer
-) => exec_xmllint(input, `xmllint --schema ${xsdfile} --noout --nonet -`);
+) => exec_xmllint(input, `xmllint --schema '${xsdfile.toString().replace(/'/g, "'\\''")}' --noout --nonet -`);
