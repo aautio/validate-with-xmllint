@@ -1,5 +1,10 @@
 import { spawn } from "child_process";
 
+export type Options = {
+  nonet?: boolean;
+  noout?: boolean;
+};
+
 /**
  * xmllint should not write anything to stdout nor stderr when validating.
  *
@@ -7,9 +12,27 @@ import { spawn } from "child_process";
  *
  * The exit code of xmllint informs us whether the xml was valid or not
  */
-const exec_xmllint = (input: string | Buffer, command: string): Promise<void> =>
-  new Promise((resolve, reject) => {
-    const xmllint = spawn(command, { shell: true });
+const exec_xmllint = (
+  input: string | Buffer,
+  command: string,
+  options: Options = {},
+): Promise<void> => {
+  const {
+    nonet = true,
+    noout = true,
+  } = options;
+  let fullCommand = command;
+
+  if (nonet) {
+    fullCommand += ' --nonet';
+  }
+
+  if (noout) {
+    fullCommand += ' --noout';
+  }
+
+  return new Promise((resolve, reject) => {
+    const xmllint = spawn(`${fullCommand} -`, { shell: true });
 
     // stdout and stderr are both captured to be made available if the promise rejects
     let output = "";
@@ -33,22 +56,23 @@ const exec_xmllint = (input: string | Buffer, command: string): Promise<void> =>
     // pipe input to process
     xmllint.stdin.end(input);
   });
+};
 
 /**
  * Validate XML without any DTD or schema.
  *
  * @param input XML
  */
-export const validateXML = (input: string | Buffer) =>
-  exec_xmllint(input, "xmllint --noout --nonet -");
+export const validateXML = (input: string | Buffer, options?: Options) =>
+  exec_xmllint(input, "xmllint", options);
 
 /**
  * Validate XML with DTD.
  *
  * @param input XML
  */
-export const validateXMLWithDTD = (input: string | Buffer) =>
-  exec_xmllint(input, "xmllint --valid --noout --nonet -");
+export const validateXMLWithDTD = (input: string | Buffer, options?: Options) =>
+  exec_xmllint(input, "xmllint --valid", options);
 
 /**
  * Validate XML with the provided XML schema file.
@@ -57,5 +81,6 @@ export const validateXMLWithDTD = (input: string | Buffer) =>
  */
 export const validateXMLWithXSD = (
   input: string | Buffer,
-  xsdfile: string | Buffer
-) => exec_xmllint(input, `xmllint --schema ${xsdfile} --noout --nonet -`);
+  xsdfile: string | Buffer,
+  options?: Options,
+) => exec_xmllint(input, `xmllint --schema ${xsdfile}`, options);

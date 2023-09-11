@@ -7,8 +7,16 @@ const { validateXML } = require("..");
 
 describe("Test valid input", function() {
   for (const file of files) {
+    const filePath = fs.readFileSync(path.join(__dirname, "valid", file));
     it(file, function() {
-      return validateXML(fs.readFileSync(path.join(__dirname, "valid", file)));
+      return validateXML(filePath);
+    });
+
+    it(file, function() {
+      return validateXML(filePath, {
+        nonet: false,
+        noout: false,
+      });
     });
   }
 });

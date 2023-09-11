@@ -1,6 +1,6 @@
 {
-  "name": "validate-with-xmllint",
-  "version": "1.2.1",
+  "name": "xmllint-wrapper",
+  "version": "1.2.2",
   "description": "Wrapper for `xmllint`. Easy validation of XML. XML Schemas and DTDs supported. Zero dependencies.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -17,9 +17,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/aautio/validate-with-xmllint"
+    "url": "https://github.com/wjhurley/xmllint-wrapper"
   },
-  "author": "Ari Autio <ari.autio@iki.fi>",
+  "author": "Will Hurley <will@wjhurley.com>",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.7.15",
