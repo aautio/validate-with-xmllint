@@ -1,0 +1,7 @@
+coverage
+dist
+internals
+node_modules
+
+# Negating here ensures this file is checked by ESLint
+!.lintstagedrc.js

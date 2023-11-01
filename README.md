@@ -1,4 +1,4 @@
-# validate-with-xmllint
+# xmllint-wrapper
 
 [![npm package][npm-badge]][npm]
 
@@ -21,10 +21,10 @@ Wrapper for `xmllint`. Easy validation of XML. XML Schemas and DTDs supported. Z
 
 ```js
 const {
-  validateXML,
-  validateXMLWithDTD,
-  validateXMLWithXSD
-} = require("validate-with-xmllint");
+    validateXML,
+    validateXMLWithDTD,
+    validateXMLWithXSD,
+} = require('xmllint-wrapper');
 ```
 
 #### Demos of passing validations
@@ -32,15 +32,15 @@ const {
 All the examples below return promises which will eventually _resolve_.
 
 ```js
-validateXML("<hello>world!</hello>");
-validateXML("<tiny/>");
+validateXML('<hello>world!</hello>');
+validateXML('<tiny/>');
 
 /**
- * All referenced DTD's must be available locally as `xmllint`
- * is invoked with `--nonet` which prevents network connections
+ * By default, all referenced DTD's must be available locally as `xmllint`
+ * is invoked with `--nonet` which prevents network connections.
  **/
 validateXMLWithDTD(
-  `<?xml version="1.0" encoding="utf-8"?>
+    `<?xml version="1.0" encoding="utf-8"?>
     <!DOCTYPE root SYSTEM "./test/dtds/valid-dtd.dtd">
     <root>
         <body/>
@@ -61,7 +61,7 @@ validateXMLWithXSD(
             <name>foo</name>
         </body>
     </root>`,
-  "./test/xsds/valid-xsd.xsd"
+  './test/xsds/valid-xsd.xsd'
 );
 ```
 
@@ -74,15 +74,15 @@ validateXML("<open_tag_only>");
 validateXML("garbage");
 
 validateXMLWithDTD(
-  `<?xml version="1.0" encoding="utf-8"?>
+    `<?xml version="1.0" encoding="utf-8"?>
     <!DOCTYPE root SYSTEM "./test/dtds/valid-dtd.dtd">
     <this>
-      Not allowed by the dtd!
+        Not allowed by the dtd!
     </this>`
 );
 
 validateXMLWithXSD(
-  `<?xml version="1.0"?>
+    `<?xml version="1.0"?>
     <root>
         <something_unexpected_here/>
     </root>`,

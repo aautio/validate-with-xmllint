@@ -1,12 +1,65 @@
 {
-  "compilerOptions": {
-    "target": "es2018",
-    "module": "commonjs",
-    "declaration": true,
-    "outDir": "./lib",
-    "noImplicitAny": true,
-    "strict": true
-  },
-  "include": ["src"],
-  "exclude": ["node_modules", "**/__tests__/*"]
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "alwaysStrict": true,
+        "baseUrl": ".",
+        "declaration": true,
+        "declarationMap": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "lib": [
+            "dom",
+            "ESNext"
+        ],
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "outDir": "dist",
+        "paths": {
+            "src/*": ["src/*"]
+        },
+        "plugins": [
+            {
+                "exclude": [
+                    "**/node_modules/**",
+                    "**/test/**",
+                    "./*.js",
+                    "./*.ts"
+                ],
+                "transform": "typescript-transform-paths",
+                "useRootDirs": true
+            },
+            {
+                "afterDeclarations": true,
+                "exclude": [
+                    "**/node_modules/**",
+                    "**/test/**",
+                    "./*.js",
+                    "./*.ts"
+                ],
+                "transform": "typescript-transform-paths",
+                "useRootDirs": true
+            }
+        ],
+        "rootDir": "./src",
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "strict": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "target": "ES6",
+        "typeRoots": [
+            "./types",
+            "./node_modules/@types"
+        ],
+        "useDefineForClassFields": true
+    },
+    "include": [
+        "src"
+    ]
 }
